@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  blog_db:
+    image: postgres:13
+    ports:
+      - 5434:5432
+    volumes:
+      - ./${DB_DATA}:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+    networks:
+      - nest_db
+networks:
+  nest_db:
